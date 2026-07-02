@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Trenzas | Tu Estilo Único</title>
+    <meta name="description" content="Descubre el catálogo de trenzas más trendy. Boxeador, Nudos Ghana, Africanas y más. Cotiza tu look ideal.">
+    
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ===== RESET Y ESTILOS GENERALES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #faf5f0;
+            color: #2d1b12;
+            padding-bottom: 80px; /* Espacio para el botón flotante */
+        }
+
+        /* ===== HEADER / NAVBAR ===== */
+        header {
+            background: #2d1b12;
+            color: #f5e6d3;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .logo span {
+            color: #d4a373;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #f5e6d3;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #d4a373;
+        }
+
+        /* ===== BANNER / HERO ===== */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+        }
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            color: #2d1b12;
+        }
+        .hero h1 span {
+            color: #8b5e3c;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #4a3228;
+            margin-top: 10px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== FILTROS ===== */
+        .filters {
+            text-align: center;
+            padding: 30px 20px 10px;
+        }
+        .filters button {
+            background: #fff;
+            border: 2px solid #d4a373;
+            color: #2d1b12;
+            padding: 10px 25px;
+            margin: 5px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+        .filters button:hover,
+        .filters button.active {
+            background: #d4a373;
+            color: #fff;
+        }
+
+        /* ===== CATÁLOGO (GALERÍA) ===== */
+        .catalogo {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 30px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: default;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-info {
+            padding: 20px;
+        }
+        .card-info h3 {
+            font-size: 20px;
+            color: #2d1b12;
+            margin-bottom: 6px;
+        }
+        .card-info .categoria {
+            font-size: 13px;
+            color: #8b5e3c;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .card-info .descripcion {
+            font-size: 14px;
+            color: #5a3f32;
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+        .card-info .precio {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2d1b12;
+        }
+
+        .btn-cotizar {
+            display: inline-block;
+            background: #25d366;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-cotizar:hover {
+            background: #1da851;
+            transform: scale(1.05);
+        }
+
+        /* ===== BOTÓN WHATSAPP FLOTANTE ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25d366;
+            color: #fff;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+            text-decoration: none;
+            transition: 0.3s;
+            z-index: 999;
+            border: 3px solid #fff;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #2d1b12;
+            color: #ccc;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+        footer .social {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        footer .social a {
+            color: #f5e6d3;
+            margin: 0 12px;
+            transition: 0.3s;
+        }
+        footer .social a:hover {
+            color: #d4a373;
+        }
+        footer p {
+            font-size: 14px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            nav {
+                justify-content: center;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 30px;
+            }
+            .catalogo {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            .card img {
+                height: 250px;
+            }
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                font-size: 28px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        /* ===== OCULTAR CARDS (para filtros) ===== */
+        .card.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="logo">Trenzas<span>By</span></div>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#catalogo">Catálogo</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="inicio">
+        <h1>✨ Tu <span>estilo único</span> comienza aquí</h1>
+        <p>Explora nuestro catálogo de trenzas profesionales. Boxeador, Nudos Ghana, Africanas y más. ¡Cotiza tu look favorito!</p>
+    </section>
+
+    <!-- ===== FILTROS ===== -->
+    <div class="filters" id="filtros">
+        <button class="active" data-filter="todas">Todas</button>
+        <button data-filter="africanas">Africanas</button>
+        <button data-filter="boxeador">Boxeador</button>
+        <button data-filter="ghana">Nudos Ghana</button>
+        <button data-filter="crochet">Crochet</button>
+    </div>
+
+    <!-- ===== CATÁLOGO ===== -->
+    <section class="catalogo" id="catalogo">
+        <!-- Card 1 -->
+        <div class="card" data-categoria="africanas">
+            <img src="https://images.unsplash.com/photo-1590513747301-2b151f7ab7d6?w=500&h=400&fit=crop" alt="Trenzas africanas color miel">
+            <div class="card-info">
+                <span class="categoria">Africanas</span>
+                <h3>Trenzas Africanas Miel</h3>
+                <p class="descripcion">Trenzas delgadas con puntas rizadas. Duración 4-6 semanas.</p>
+                <p class="precio">Desde $180.000</p>
+                <a href="#" class="btn-cotizar" data-nombre="Trenzas Africanas Miel">
+                    <i class="fab fa-whatsapp"></i> Cotizar
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card" data-categoria="boxeador">
+            <img src="https://images.unsplash.com/photo-1562313782-7621b69d7251?w=500&h=400&fit=crop" alt="Trenzas boxeador clásicas">
+            <div class="card-info">
+                <span class="categoria">Boxeador</span>
+                <h3>Boxeador Clásicas</h3>
+                <p class="descripcion">Dos trenzas gruesas, estilo deportivo y elegante.</p>
+                <p class="precio">Desde $120.000</p>
+                <a href="#" class="btn-cotizar" data-nombre="Boxeador Clásicas">
+                    <i class="fab fa-whatsapp"></i> Cotizar
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card" data-categoria="ghana">
+            <img src="https://images.unsplash.com/photo-1587089348775-2dc3b5f14b1f?w=500&h=400&fit=crop" alt="Nudos Ghana con cuentas">
+            <div class="card-info">
+                <span class="categoria">Nudos Ghana</span>
+                <h3>Nudos Ghana con Cuentas</h3>
+                <p class="descripcion">Estilo tribal con cuentas decorativas. Ideal para eventos.</p>
+                <p class="precio">Desde $200.000</p>
+                <a href="#" class="btn-cotizar" data-nombre="Nudos Ghana con Cuentas">
+                    <i class="fab fa-whatsapp"></i> Cotizar
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card" data-categoria="crochet">
+            <img src="https://images.unsplash.com/photo-1600700123798-7113a08e1b3f?w=500&h=400&fit=crop" alt="Crochet rizado">
+            <div class="card-info">
+                <span class="categoria">Crochet</span>
+                <h3>Crochet Rizado Largo</h3>
+                <p class="descripcion">Trenzas con cabello rizado, volumen y movimiento.</p>
+                <p class="precio">Desde $220.000</p>
+                <a href="#" class="btn-cotizar" data-nombre="Crochet Rizado Largo">
+                    <i class="fab fa-whatsapp"></i> Cotizar
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card" data-categoria="africanas">
+            <img src="https://images.unsplash.com/photo-1608744882201-8a7e2fe8148d?w=500&h=400&fit=crop" alt="Trenzas africanas rubias">
+            <div class="card-info">
+                <span class="categoria">Africanas</span>
+                <h3>Africanas Rubias</h3>
+                <p class="descripcion">Trenzas finas color rubio ceniza, tendencia 2026.</p>
+                <p class="precio">Desde $195.000</p>
+                <a href="#" class="btn-cotizar" data-nombre="Africanas Rubias">
+                    <i class="fab fa-whatsapp"></i> Cotizar
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card" data-categoria="boxeador">
+            <img src="https://images.unsplash.com/photo-1590513747301-2b151f7ab7d6?w=500&h=400&fit=crop&crop=face" alt="Boxeador con detalles">
+            <div class="card-info">
+                <span class="categoria">Boxeador</span>
+                <h3>Boxeador con Detalles</h3>
+                <p class="descripcion">Trenzas gruesas con hilos de colores.</p>
+                <p class="precio">Desde $140.000</p>
+                <a href="#" class="btn-cotizar" data-nombre="Boxeador con Detalles">
+                    <i class="fab fa-whatsapp"></i> Cotizar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHATSAPP FLOTANTE ===== -->
+    <a href="https://wa.me/573001234567?text=Hola%20vi%20el%20catálogo%20de%20trenzas%20y%20quiero%20cotizar" 
+       class="whatsapp-float" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="contacto">
+        <div class="social">
+            <a href="https://instagram.com/tucuenta" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com/tucuenta" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://tiktok.com/@tucuenta" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <p>© 2026 TrenzasBy - Todos los derechos reservados</p>
+        <p style="margin-top: 5px; font-size: 12px; color: #999;">
+            <i class="fas fa-phone"></i> +57 300 123 4567 | 
+            <i class="fas fa-envelope"></i> info@trenzasby.com
+        </p>
+    </footer>
+
+    <!-- ===== JAVASCRIPT (Filtros + WhatsApp) ===== -->
+    <script>
+        // ===== FILTROS =====
+        const filtros = document.querySelectorAll('.filters button');
+        const cards = document.querySelectorAll('.card');
+
+        filtros.forEach(boton => {
+            boton.addEventListener('click', function() {
+                // Quitar clase active de todos
+                filtros.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const filtro = this.dataset.filter;
+
+                cards.forEach(card => {
+                    const categoria = card.dataset.categoria;
+                    if (filtro === 'todas' || categoria === filtro) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // ===== BOTONES COTIZAR (WhatsApp personalizado) =====
+        const botonesCotizar = document.querySelectorAll('.btn-cotizar');
+        const numeroWhatsApp = '573001234567'; // <--- CAMBIA ESTE NÚMERO
+
+        botonesCotizar.forEach(boton => {
+            boton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const nombreTrenza = this.dataset.nombre;
+                const mensaje = `Hola, vi el catálogo de trenzas y quiero cotizar: *${nombreTrenza}*`;
+                const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+                window.open(url, '_blank');
+            });
+        });
+
+        // ===== CAMBIAR NÚMERO DEL BOTÓN FLOTANTE =====
+        const botonFlotante = document.querySelector('.whatsapp-float');
+        if (botonFlotante) {
+            botonFlotante.href = `https://wa.me/${numeroWhatsApp}?text=Hola%20vi%20el%20catálogo%20de%20trenzas%20y%20quiero%20cotizar`;
+        }
+
+        console.log('✅ Catálogo de Trenzas cargado correctamente');
+    </script>
+
+</body>
+</html>
